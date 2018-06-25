@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14734ac8-d5a6-4a44-a6a8-471715c788e7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="angular.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="angular.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/angular.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+            <state relative-caret-position="469">
+              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -106,7 +106,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book_list.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="book_list.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/book_list.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="246">
@@ -126,8 +126,8 @@
       <find>post</find>
       <find>styles</find>
       <find>console.</find>
-      <find>BlogPostService</find>
       <find>console.log</find>
+      <find>BlogPostService</find>
     </findStrings>
     <replaceStrings>
       <replace>getAllBooks</replace>
@@ -151,13 +151,13 @@
         <option value="$PROJECT_DIR$/src/tsconfig.spec.json" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
-        <option value="$PROJECT_DIR$/angular.json" />
         <option value="$PROJECT_DIR$/src/index.html" />
         <option value="$PROJECT_DIR$/src/styles.css" />
         <option value="$PROJECT_DIR$/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/src/app/user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/book_list.service.ts" />
+        <option value="$PROJECT_DIR$/angular.json" />
       </list>
     </option>
   </component>
@@ -248,12 +248,12 @@
       <option name="presentableId" value="Default" />
       <updated>1529839343966</updated>
       <workItem from="1529839345526" duration="751000" />
-      <workItem from="1529845297284" duration="30334000" />
+      <workItem from="1529845297284" duration="30559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31085000" />
+    <option name="totallyTimeSpent" value="31310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="712" extended-state="6" />
@@ -382,13 +382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angular.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -448,6 +441,13 @@
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
         </state>
       </provider>
     </entry>
