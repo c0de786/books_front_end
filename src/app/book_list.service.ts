@@ -7,23 +7,23 @@ export class BookListService {
 
     constructor(private http: HttpClient, private _userService: UserService) {
     }
-
+    public  apiUrl = 'https://django-books-rest-api.herokuapp.com';
     // Uses http.get() to load data from a single API endpoint
     list() {
-        return this.http.get('http://localhost:8000/all/');
+        return this.http.get(this.apiUrl + '/all/');
     }
 
     // send a POST request to the API to create a new data object
     create(post, token) {
-        return this.http.post('http://localhost:8000/booklists/', JSON.stringify(post), this.getHttpOptions());
+        return this.http.post(this.apiUrl + '/booklists/', JSON.stringify(post), this.getHttpOptions());
     }
 
     delete(id, token) {
-        return this.http.delete('http://localhost:8000/booklists/' + id + '/', this.getHttpOptions());
+        return this.http.delete(this.apiUrl + '/booklists/' + id + '/', this.getHttpOptions());
     }
 
     update(book, token) {
-        return this.http.patch('http://localhost:8000/booklists/' + book.id + '/', JSON.stringify(book), this.getHttpOptions());
+        return this.http.patch(this.apiUrl + '/booklists/' + book.id + '/', JSON.stringify(book), this.getHttpOptions());
     }
 
     // helper function to build the HTTP headers
