@@ -3,7 +3,6 @@ import {BookListService} from './book_list.service';
 import {UserService} from './user.service';
 import {throwError} from 'rxjs';  // Angular 6/RxJS 6
 declare var $: any ;
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit {
 
 
 
-    constructor(private _bookListService: BookListService, private _userService: UserService) { }
+    constructor(private _bookListService: BookListService, public _userService: UserService) { }
 
   ngOnInit() {
     this.getAllBooks();
