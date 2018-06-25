@@ -1,0 +1,227 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li *ngIf="!_userService.token"><a data-toggle="modal" data-target="#modalLoginForm" href="#">Login<span
+                        class=" glyphicon glyphicon-log-in"></span> </a></li>
+                <!--<li *ngIf="_userService.token"><h3>{{ _userService.username }}</h3></li>-->
+                <li *ngIf="_userService.token"><a href="logout()"> Logout<span
+                        class="glyphicon glyphicon-log-out"></span> </a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+        </div>
+
+        <div class="col-sm-8 text-left ">
+            <div class="col-sm-12 text-center" >
+                <h2>Second Treasures Bookstore</h2>
+            </div>
+            <div class="col-sm-12 text-left" *ngIf="_userService.token">
+                <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#addBookModal">
+                    Add New Book
+                </button>
+            </div>
+
+
+            <div class="col-sm-12 text-center">
+                <h4>List of all available books</h4>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th *ngIf="_userService.token">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let post of posts">
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.name }}</td>
+                    <td>{{ post.author }}</td>
+                    <td>{{ post.genre }}</td>
+                    <td>${{ post.price }}</td>
+                    <td *ngIf="_userService.token">
+                        <span>
+                            <button class="btn btn-info" type="button" class="btn btn-primary" data-toggle="modal" (click)="showEditBook(post)" data-target="#updateBookModal">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        </span>
+                        <span>
+                         <button (click)="deleteBook(post.id)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                        </span>
+                    </td>
+
+
+                </tr>
+
+                </tbody>
+            </table>
+
+
+            <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="add_form">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLabel">Add New Book</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="title">Book Title</label>
+                                <input type="text" class="form-control" [(ngModel)]="new_post.name" id="title"
+                                       placeholder="Book Title" name="post_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Author Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="new_post.author" id="author"
+                                       placeholder="Author Name" name="author_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="genre">Genre</label>
+                                <input type="text" class="form-control" [(ngModel)]="new_post.genre" id="genre"
+                                       placeholder="Genre" name="book_genre">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" class="form-control" [(ngModel)]="new_post.price" id="price"
+                                       placeholder="$Price" name="book_price">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click)="addBook();" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog" aria-labelledby="updateBookModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                            <form id="update_form">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="updateBookModalLabel">Update Book Details</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="title">Book Title</label>
+                                    <input type="text" class="form-control" [(ngModel)]="bookdetails.name" id="updateTitle"
+                                           placeholder="Book Title" name="update_book_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="author">Author Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="bookdetails.author" id="updateAuthor"
+                                           placeholder="Author Name" name="update_author_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="genre">Genre</label>
+                                    <input type="text" class="form-control" [(ngModel)]="bookdetails.genre" id="updateGenre"
+                                           placeholder="Genre" name="update_book_genre">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" [(ngModel)]="bookdetails.price" id="updatePrice"
+                                           placeholder=" $Price " name="update_book_price">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button (click)="updateBook(bookdetails)" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-2 sidenav">
+        </div>
+
+
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="loginFormlLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="login_form">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="loginFormModel">Login as Employee</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="login-username" [(ngModel)]="user.username"
+                                   id="username" placeholder="Username">
+                            <span *ngFor="let error of _userService.errors.username"><br/>{{ error }}</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="login-password" [(ngModel)]="user.password"
+                                   id="password" placeholder="Password">
+                            <span *ngFor="let error of _userService.errors.password"><br/>{{ error }}</span>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div>
+                            <span class="alert alert-danger error-msg" *ngFor="let error of _userService.errors.non_field_errors">{{ error }}</span>
+                        </div>
+                        <span><button (click)="login()" class="btn btn-primary">Log In</button></span>
+
+                    </div>
+                    </form>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
